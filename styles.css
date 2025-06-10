@@ -263,8 +263,13 @@ body::before {
 
 /* Sections */
 section {
-    padding: 6rem 0;
+    padding: 4rem 0;
     position: relative;
+    overflow: hidden;
+}
+
+.section-padding {
+    padding-top: 8rem;
 }
 
 .section-title {
@@ -341,166 +346,73 @@ section {
     transform: scale(1.05);
 }
 
-/* Experience Section */
-.experience {
-    padding: 6rem 0;
-    background: var(--background);
-}
-
-.timeline {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 0;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--sap-blue), var(--sap-light-blue));
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.timeline-item {
+/* Experience Section - Card Layout */
+.experience-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0;
-    padding: 2rem 0;
-    position: relative;
-    width: 100%;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-.timeline-item:nth-child(even) {
-    flex-direction: row-reverse;
-    margin-left: 0;
-    margin-right: auto;
-}
-
-.timeline-logo {
-    flex: 1 1 45%;
-    max-width: 45%;
+.experience-card {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 120px;
-    z-index: 1;
-}
-
-.timeline-logo.left {
-    order: 1;
-}
-.timeline-content.right {
-    order: 2;
-}
-.timeline-content.left {
-    order: 1;
-}
-.timeline-logo.right {
-    order: 2;
-}
-
-.company-logo {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-    border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    background: #fff;
-    padding: 12px;
-    transition: transform 0.2s;
-}
-
-.company-logo:hover {
-    transform: scale(1.08) rotate(-2deg);
-    box-shadow: 0 4px 16px rgba(0,112,242,0.15);
-}
-
-.timeline-content {
-    flex: 1 1 45%;
-    max-width: 45%;
+    gap: 2rem;
     background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: var(--shadow-md);
-    transition: all 0.3s ease;
-    position: relative;
-    margin: 0;
-    z-index: 1;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    align-items: flex-start;
 }
 
-.timeline-content:hover {
+.experience-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
 }
 
-.timeline-content::before {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: var(--sap-blue);
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
+.experience-logo {
+    flex: 0 0 100px;
+    height: 100px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    box-shadow: var(--shadow-inner, inset 0 2px 4px 0 rgba(0,0,0,0.06));
 }
 
-.timeline-item:nth-child(odd) .timeline-content::before {
-    left: -60px;
+.experience-logo .company-logo {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
 }
 
-.timeline-item:nth-child(even) .timeline-content::before {
-    right: -60px;
-}
-
-.timeline-content h3 {
-    color: var(--sap-blue);
+.experience-details h3 {
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
 }
 
-.timeline-content h4 {
-    color: var(--sap-light-blue);
+.experience-details h4 {
     font-size: 1.1rem;
-    margin-bottom: 1rem;
     font-weight: 500;
+    margin-bottom: 0.5rem;
 }
 
-.timeline-content .date {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: rgba(0, 112, 242, 0.1);
-    color: var(--sap-blue);
-    border-radius: 20px;
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-}
-
-.timeline-content ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.timeline-content ul li {
-    position: relative;
-    padding-left: 1.5rem;
+.experience-details .date {
+    display: block;
+    color: var(--light-text);
     margin-bottom: 1rem;
-    color: var(--text-color);
-    line-height: 1.6;
+    font-size: 0.9rem;
 }
 
-.timeline-content ul li::before {
-    content: '•';
-    color: var(--sap-blue);
-    position: absolute;
-    left: 0;
-    font-size: 1.2rem;
+.experience-details ul {
+    list-style-position: outside;
+    padding-left: 1.2rem;
+}
+
+.experience-details ul li {
+    margin-bottom: 0.5rem;
 }
 
 /* Projects Section */
@@ -511,9 +423,29 @@ section {
     margin-top: 2rem;
 }
 
+.featured-project {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.featured-project h3,
+.featured-project p,
+.featured-project .project-tags {
+    grid-column: 1 / -1;
+}
+
+.project-role {
+    font-style: italic;
+    color: var(--light-text);
+    margin-top: -0.5rem;
+}
+
 .project-card {
     background: var(--card-bg);
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: 15px;
     box-shadow: var(--shadow);
     transition: var(--transition);
@@ -539,6 +471,29 @@ section {
 .project-card h3 {
     color: var(--primary-color);
     margin-bottom: 1rem;
+}
+
+.project-card h4 {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-tags {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.project-tags span {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
 }
 
 /* Skills Section */
@@ -1021,4 +976,27 @@ footer::before {
     90% {
         transform: rotate(10deg);
     }
+}
+
+.integration-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--section-bg);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    border: 1px solid #e2e8f0;
+}
+
+.integration-flow span {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.integration-flow .arrow {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    line-height: 1;
 } 
