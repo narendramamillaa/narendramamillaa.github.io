@@ -16,6 +16,7 @@
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
 }
 
 * {
@@ -294,19 +295,56 @@ section {
 }
 
 .about-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    background: var(--card-bg);
-    padding: 3rem;
-    border-radius: 20px;
-    box-shadow: var(--shadow);
+    display: flex;
+    align-items: stretch;
+    gap: 2rem;
+}
+
+.about-image-block {
+    flex: 0 0 280px;
+    background: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-image-block:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl, 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04));
+}
+
+.about-text-block {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+}
+
+.about-image {
+    width: 100%;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+}
+
+.about-image:hover {
+    transform: scale(1.05);
+}
+
+.about-image-block:hover .about-image {
+    transform: scale(1.05);
 }
 
 /* Experience Section */
 .experience {
     padding: 6rem 0;
-    background: var(--section-bg);
+    background: var(--background);
 }
 
 .timeline {
@@ -618,13 +656,13 @@ section {
 }
 
 .education-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
     box-shadow: var(--shadow-lg);
 }
 
 .education-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
+    margin-top: 1rem;
+    color: var(--sap-blue);
 }
 
 .university-logo {
@@ -644,22 +682,111 @@ section {
 }
 
 .contact-content {
-    max-width: 600px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.contact-top-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: stretch;
+}
+
+.contact-form-container h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
     text-align: center;
+}
+
+.contact-details {
     background: var(--card-bg);
-    padding: 3rem;
+    padding: 2.5rem;
     border-radius: 15px;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+
+.contact-details h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.contact-details p {
+    margin-bottom: 1.5rem;
 }
 
 .contact-info {
-    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.contact-form-container {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    transition: var(--transition);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--accent-color);
+}
+
+.contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.contact-form .btn {
+    width: 100%;
+}
+
+.linkedin-tile {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+
+.linkedin-tile h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.linkedin-tile p {
+    margin-bottom: 1.5rem;
+    color: var(--light-text);
+}
+
+.linkedin-tile .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .contact-info p {
     margin-bottom: 1rem;
-    color: var(--light-text);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -864,11 +991,34 @@ footer::before {
 }
 
 .education-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
     box-shadow: var(--shadow-lg);
 }
 
 .education-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
+    margin-top: 1rem;
+    color: var(--sap-blue);
+}
+
+.waving-hand {
+    animation: wave 2s linear infinite;
+    display: inline-block;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    10%, 30%, 50%, 70% {
+        transform: rotate(14deg);
+    }
+    20%, 40%, 60% {
+        transform: rotate(-8deg);
+    }
+    80% {
+        transform: rotate(-4deg);
+    }
+    90% {
+        transform: rotate(10deg);
+    }
 } 
