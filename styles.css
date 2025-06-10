@@ -326,8 +326,11 @@ section {
     background: white;
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: none;
-    transition: transform 0.3s ease;
+    box-shadow: var(--shadow-lg);
+}
+
+.about-text-block p {
+    text-align: justify;
 }
 
 .about-image {
@@ -413,6 +416,7 @@ section {
 
 .experience-details ul li {
     margin-bottom: 0.5rem;
+    text-align: justify;
 }
 
 /* Projects Section */
@@ -435,6 +439,10 @@ section {
 .featured-project p,
 .featured-project .project-tags {
     grid-column: 1 / -1;
+}
+
+.featured-project > p {
+    text-align: justify;
 }
 
 .project-role {
@@ -494,6 +502,10 @@ section {
     border-radius: 15px;
     font-size: 0.85rem;
     font-weight: 500;
+}
+
+.featured-project ul li {
+    text-align: justify;
 }
 
 /* Skills Section */
