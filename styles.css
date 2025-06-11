@@ -1011,4 +1011,72 @@ footer::before {
     color: var(--primary-color);
     font-size: 1.5rem;
     line-height: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .featured-project {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+        transition: left 0.4s ease;
+        padding-bottom: 80px;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .hamburger .line {
+        width: 30px;
+        height: 3px;
+        background: var(--text-color);
+        margin: 6px 0;
+        transition: 0.4s;
+    }
+
+    .hamburger.active .line:nth-child(1) {
+        transform: rotate(-45deg) translate(-7px, 7px);
+    }
+    .hamburger.active .line:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .line:nth-child(3) {
+        transform: rotate(45deg) translate(-7px, -7px);
+    }
+
+    .hero h1 { font-size: 2.8rem; }
+    .hero h2 { font-size: 1.5rem; }
+
+    .about-content, .experience-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-image-block {
+        margin-bottom: 2rem;
+    }
+
+    .contact-top-row, .skills-grid, .education-grid {
+        grid-template-columns: 1fr;
+    }
 } 
