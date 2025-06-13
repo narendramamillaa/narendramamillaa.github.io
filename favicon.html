@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Favicon</title>
+</head>
+<body>
+    <canvas id="favicon" width="32" height="32" style="display:none;"></canvas>
+    <script>
+        const canvas = document.getElementById('favicon');
+        const ctx = canvas.getContext('2d');
+        
+        // Set background
+        ctx.fillStyle = '#2c3e50';
+        ctx.fillRect(0, 0, 32, 32);
+        
+        // Set text properties
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 16px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        
+        // Draw text
+        ctx.fillText('NM', 16, 16);
+        
+        // Convert to favicon
+        const link = document.createElement('link');
+        link.type = 'image/x-icon';
+        link.rel = 'shortcut icon';
+        link.href = canvas.toDataURL('image/x-icon');
+        document.head.appendChild(link);
+    </script>
+</body>
+</html> 

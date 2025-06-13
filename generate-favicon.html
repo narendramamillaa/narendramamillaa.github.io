@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Favicon</title>
+</head>
+<body>
+    <canvas id="favicon" width="32" height="32" style="border:1px solid #000;"></canvas>
+    <p>Right-click on the image above and select "Save image as..." to save it as favicon.ico</p>
+    <script>
+        const canvas = document.getElementById('favicon');
+        const ctx = canvas.getContext('2d');
+        
+        // Set background
+        ctx.fillStyle = '#2c3e50';
+        ctx.fillRect(0, 0, 32, 32);
+        
+        // Set text properties
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 16px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        
+        // Draw text
+        ctx.fillText('NM', 16, 16);
+    </script>
+</body>
+</html> 
